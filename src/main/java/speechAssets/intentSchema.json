@@ -1,0 +1,37 @@
+{
+  "intents": [
+    {
+      "intent": "TinyTales_Red_GoLeftTowardForestIntent"
+    },
+    {
+      "intent": "TinyTales_Red_GoRightTowardRiverIntent"
+    },
+    {
+      "intent": "TinyTales_Red_GoTowardShinyThingIntent"
+    },
+    {
+      "intent": "TinyTales_Red_GoTowardsGrandmasIntent"
+    },
+    {
+      "intent": "TinyTales_Red_ThrowCakeAtTheWolfIntent"
+    },
+    {
+      "intent": "TinyTales_Red_YellForHelpIntent"
+    },
+    {
+      "intent": "TinyTales_Red_KeepSkippingOnThePathIntent"
+    },
+    {
+      "intent": "TinyTales_Red_FollowWolfOnShortcutIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}
