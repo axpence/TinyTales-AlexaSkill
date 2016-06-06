@@ -2,7 +2,6 @@ package tinytalered;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.apache.commons.lang3.StringUtils;
 
 import com.amazon.speech.slu.Intent;
@@ -19,6 +18,8 @@ import com.amazon.speech.ui.SsmlOutputSpeech;
 import com.amazon.speech.ui.Reprompt;
 import com.amazon.speech.ui.SimpleCard;
 
+import main.java.*;
+
 import java.util.HashMap;
 import java.util.ArrayList;
 
@@ -32,22 +33,14 @@ import javax.swing.plaf.nimbus.State;
 public class TinyTaleRedSpeechlet implements Speechlet {
 
     private static final Logger log = LoggerFactory.getLogger(TinyTaleRedSpeechlet.class);
-    private static final String CURRENT_STATE = "CURRENT_STATE";
-    private static final String AUDIO_S3_LINK_1  = "https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-1aOnceUponATime.mp3";
+    private static final String CURRENT_STATE_KEY = "CURRENT_STATE";
 
-    private static final String PREVIOUS_INTENT = "PREVIOUS_INTENT";
+    private static final String PREVIOUS_INTENT_KEY = "PREVIOUS_INTENT";
+    private static final String STATE_PATH_KEY = "STATE_PATH_KEY";
 
-    private static final String INITIAL_INTENT = "INITIAL_INTENT";
-    private static final String Intent_GoLeft = "TinyTales_Red_GoLeftTowardForestIntent";
-    private static final String Intent_GoRight = "TinyTales_Red_GoRightTowardRiverIntent";
-    private static final String Intent_Shiny = "TinyTales_Red_GoTowardShinyThingIntent";
-    private static final String Intent_Grandmas = "TinyTales_Red_GoTowardsGrandmasIntent";
-    private static final String Intent_Cake = "TinyTales_Red_ThrowCakeAtTheWolfIntent";
-    private static final String Intent_Yell = "TinyTales_Red_YellForHelpIntent";
-    private static final String Intent_Skipping = "TinyTales_Red_KeepSkippingOnThePathIntent";
-    private static final String Intent_FollowWolf = "TinyTales_Red_FollowWolfOnShortcutIntent";
-    private static final String Intent_Stop = "AMAZON.StopIntent";
-
+    private static final String kInitialIntent = "kInitialIntent";
+    private static final String kInitialState = "NODE_ROOT";
+    
     @Override
     public void onSessionStarted(final SessionStartedRequest request, final Session session)
             throws SpeechletException {
@@ -63,7 +56,8 @@ public class TinyTaleRedSpeechlet implements Speechlet {
                 session.getSessionId());
         return getWelcomeResponse();
     }
-
+    
+ 
     @Override
     public SpeechletResponse onIntent(final IntentRequest request, final Session session)
             throws SpeechletException {
@@ -73,27 +67,104 @@ public class TinyTaleRedSpeechlet implements Speechlet {
         Intent intent = request.getIntent();
         String currentIntent = (intent != null) ? intent.getName() : null;
 
-        // Get the current state the session.
-        String currentState = (String) session.getAttribute(CURRENT_STATE);
+        
+      if ("AMAZON.HelpIntent".equals(currentIntent)) {
+    	  /*
+    	   sample utterances: help,help me,can you help me
+			Provide help about how to use the skill. See “Offer Help for Complex Skills” in the Voice Design Best Practices for guidelines about help text.
+		   */
+    	  //TODO: provide help instructions!
+    	  
+      } else if("AMAZON.StopIntent".equals(currentIntent) || "AMAZON.CancelIntent".equals(currentIntent)){
+    	  /*
+    	    AMAZON.StopIntent - Either of the following:
+				Let the user stop an action (but remain in the skill)
+				Let the user completely exit the skill
+			AMAZON.CancelIntent - Either of the following:
+				Let the user cancel a transaction or task (but remain in the skill)
+				Let the user completely exit the skill
+    	   */
+    	  
+    	  PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
+          outputSpeech.setText("Exiting Tiny Tales! Goodbye!");
+          SpeechletResponse r = SpeechletResponse.newTellResponse(outputSpeech);
+      	  r.setShouldEndSession(true);//since user asked to cancel or stop, end skill's session
+          return r;
+      } 
+
+        
+        // Get the current state the session, get current state node
+        String currentState = (String) session.getAttribute(CURRENT_STATE_KEY);
+        TinyTalesRedStateManager manager = new TinyTalesRedStateManager();
+        AZStateNode<String> currentStateNode = null;
+        try { //TODO: place outside of try/catch
+        	currentStateNode = manager.getRootNode();
+        } catch (Exception e) {
+        	
+        }
+        
         if (!StringUtils.isNotEmpty(currentState)) {
-            session.setAttribute(CURRENT_STATE,"INITIAL_STATE");
-
-        }
-
-        String previousIntent = (String) session.getAttribute(PREVIOUS_INTENT);
-        if (!StringUtils.isNotEmpty(previousIntent)) {
-            session.setAttribute(PREVIOUS_INTENT,INITIAL_INTENT);
-        }
-
-        return tickSM(currentIntent, session);
-
-        if ("AMAZON.HelpIntent".equals(intentName)) {
-            return getHelpResponse();
+            session.setAttribute(CURRENT_STATE_KEY,kInitialState);
+            currentState = kInitialState;//initial state is when the skill/app is launched
         } else {
-            throw new SpeechletException("Invalid Intent");
+          currentStateNode = manager.getNodeMatchingDebugName(currentStateNode, currentState);
         }
+        
+        String previousIntent = (String) session.getAttribute(PREVIOUS_INTENT_KEY);
+        String debugStringz = "currentStateAtStartOfTick="+currentState+",previousIntent="+previousIntent+",currentIntent="+currentIntent;
+        
+        //See if valid transition matches current state
+        if(currentStateNode.transferStructure.hasValidTransferForIntent(currentIntent)){
+            //Set new state if match, else- error prompt
+            AZStateNode<String> nextState = currentStateNode.transferStructure.getStateForIntent(currentIntent);
+            session.setAttribute(CURRENT_STATE_KEY, nextState.debugName);//fire transition!
+            debugStringz = "newCurrentStateAfterTransition="+nextState.debugName+","+debugStringz;
+            currentStateNode = nextState;
+        } else {
+        	//TODO: Error prompt **if possible**!
+        }
+        
+        session.setAttribute("DEBUG_AZ",debugStringz);//tmp!
 
+        //update the previous intent
+        session.setAttribute(PREVIOUS_INTENT_KEY,currentIntent);
+
+        String statePathKey = (String) session.getAttribute(STATE_PATH_KEY);
+        statePathKey = (statePathKey == null) ? "" : statePathKey;
+        session.setAttribute(STATE_PATH_KEY,statePathKey+","+currentStateNode.debugName);//path taken in entire session!
+        //TODO: save (currentState, incomingIntent) KV pairs for future debugging in time series within the session
+        
+        String speechOutput = currentStateNode.audioContainer.getSSML();
+
+        // Create the Simple card content.
+        SimpleCard card = new SimpleCard();
+        card.setTitle("HelloWorld");
+        card.setContent(debugStringz);
+
+        // Create the plain text output.
+        SsmlOutputSpeech speech = new SsmlOutputSpeech();
+        speech.setSsml(speechOutput);
+        
+        SpeechletResponse r = null;
+        if(currentStateNode.children.isEmpty()){
+        	 r = SpeechletResponse.newTellResponse(speech, card); 
+         	 r.setShouldEndSession(true);//since doesn't have children, close the skill.
+        } else {
+            // Create reprompt
+        	String errorSSML = currentStateNode.audioContainer.getErrorSSML();
+        	if(errorSSML == null){errorSSML = speechOutput;}
+        	SsmlOutputSpeech repromptSpeech = new SsmlOutputSpeech();
+        	repromptSpeech.setSsml(errorSSML);
+        	
+            Reprompt reprompt = new Reprompt();
+            reprompt.setOutputSpeech(repromptSpeech);
+
+            r = SpeechletResponse.newAskResponse(speech, reprompt, card);
+        	r.setShouldEndSession(false);//keep skill open since has children!
+        }
+        return r;  
     }
+
 
     @Override
     public void onSessionEnded(final SessionEndedRequest request, final Session session)
@@ -104,18 +175,6 @@ public class TinyTaleRedSpeechlet implements Speechlet {
     }
 
 
-    private SpeechletResponse tickSM(String intentName, final Session session)  throws SpeechletException {
-
-        String currentState = (String) session.getAttribute(CURRENT_STATE);
-        if (currentState == null){ throw new java.lang.AssertionError(); }
-
-        session.setAttribute(CURRENT_STATE,"intent:"+intentName);//tmp!
-
-//        throw new SpeechletException("Invalid Intent!!!");
-
-        return getDebugResponse(intentName,currentState);
-    }
-
 
     /**
      * Creates and returns a {@code SpeechletResponse} with a welcome message.
@@ -124,102 +183,47 @@ public class TinyTaleRedSpeechlet implements Speechlet {
      */
     private SpeechletResponse getWelcomeResponse() {
 
-        String speechText = "Welcome to TinyTales. Say Hello to get started";
+/*
+        Image introImage = Image();
+        introImage.setLargeImageUrl("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/iconlarge.png");
+        introImage.setSmallImageUrl("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/iconsmall.png");
 
-//        Image introImage = Image();
-//        introImage.setLargeImageUrl("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/iconlarge.png");
-//        introImage.setSmallImageUrl("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/iconsmall.png");
-//
-//        StandardCard card = new StandardCard();
-//        card.setTitle("TestizTitle hurre");
-//        card.setText("Testiez With Image");
-//        card.setImage(introImage);
-
+        StandardCard card = new StandardCard();
+        card.setTitle("TestizTitle hurre");
+        card.setText("Testiez With Image");
+        card.setImage(introImage);
+*/
+        
+        String currentState = kInitialState;
+        
+        TinyTalesRedStateManager manager = new TinyTalesRedStateManager();
+        AZStateNode<String> currentStateNode = null;
+        try { //TODO: place outside of try/catch
+        	currentStateNode = manager.getRootNode();
+        } catch (Exception e) {
+        	
+        }
+        
         SimpleCard card = new SimpleCard();
-        card.setTitle("Title - HelloWorld");
-        card.setContent(speechText);
-
-        // Create the plain text output.
-        PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
-        speech.setText(speechText);
-
-        // Create reprompt
+        card.setTitle("Welcome to Tiny Tales!");
+        card.setContent("STUFFZ HEREZ");
+        
+        String speechOutput = currentStateNode.audioContainer.getSSML();
+    	String errorSSML = currentStateNode.audioContainer.getErrorSSML();
+    	if(errorSSML == null){errorSSML = speechOutput;}
+    	SsmlOutputSpeech repromptSpeech = new SsmlOutputSpeech();
+    	repromptSpeech.setSsml(errorSSML);
+    	
         Reprompt reprompt = new Reprompt();
-        reprompt.setOutputSpeech(speech);
-
-        return SpeechletResponse.newAskResponse(speech, reprompt, card);
-    }
-
-    /**
-     * Creates a {@code SpeechletResponse} for the hello intent.
-     *
-     * @return SpeechletResponse spoken and visual response for the given intent
-     */
-    private SpeechletResponse getHelloResponse() {
-        String speechText = "Hello world";
-
-        String speechOutput = "<speak>"
-                + "Start file play"
-                + "<audio src='"+AUDIO_S3_LINK_1+"'/>"
-                + "End file play"
-                + "</speak>";
-
-        // Create the Simple card content.
-        SimpleCard card = new SimpleCard();
-        card.setTitle("HelloWorld");
-        card.setContent(speechOutput);
-
-        // Create the plain text output.
+        reprompt.setOutputSpeech(repromptSpeech);
+        
         SsmlOutputSpeech speech = new SsmlOutputSpeech();
         speech.setSsml(speechOutput);
-
-        return SpeechletResponse.newTellResponse(speech, card);
-    }
-
-
-    private SpeechletResponse getDebugResponse(String intentName, String currentState) {
-        String speechOutput = "Intent name is " + intentName + " boom." + "current state is " + currentState;
-
-        // Create the Simple card content.
-        SimpleCard card = new SimpleCard();
-        card.setTitle("Debug: " + intentName);
-        card.setContent(speechOutput);
-
-        // Create the plain text output.
-        SsmlOutputSpeech speech = new SsmlOutputSpeech();
-        speech.setSsml(speechOutput);
-
-        SpeechletResponse r = SpeechletResponse.newTellResponse(speech, card);
-        r.setShouldEndSession(false);
+        
+        SpeechletResponse r = SpeechletResponse.newAskResponse(speech, reprompt, card);
+        r.setShouldEndSession(false);//TODO: Amazon, please fix this..
         return r;
+        
     }
 
-    /**
-     * Creates a {@code SpeechletResponse} for the help intent.
-     *
-     * @return SpeechletResponse spoken and visual response for the given intent
-     */
-    private SpeechletResponse getHelpResponse() {
-        String speechText = "You can say hello to me!";
-
-        // Create the Simple card content.
-        SimpleCard card = new SimpleCard();
-        card.setTitle("HelloWorld");
-        card.setContent(speechText);
-
-        // Create the plain text output.
-        PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
-        speech.setText(speechText);
-
-        // Create reprompt
-        Reprompt reprompt = new Reprompt();
-        reprompt.setOutputSpeech(speech);
-
-        return SpeechletResponse.newAskResponse(speech, reprompt, card);
-    }
-
-    public static void main(String[] args) {
-        // Prints "Hello, World" to the terminal window.
-        System.out.println("Hello, World");
-    }
 }

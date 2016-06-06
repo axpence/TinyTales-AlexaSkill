@@ -7,6 +7,25 @@ public class AZAudio {
     
     AZAudio(URLList a, URLList b){
     	this.audioUrls = a;
-    	this.audioUrls = b;
+    	this.errorAudioUrls = b;
+    }
+    
+    public String getSSML(){
+    	return this.ssmlBuilderHelper(this.audioUrls);
+    }
+    
+    public String getErrorSSML(){
+    	return this.ssmlBuilderHelper(this.errorAudioUrls);
+    }
+    
+    public String ssmlBuilderHelper(URLList l){
+    	if(l.urls.length == 0){return null;}
+    	StringBuilder sb = new StringBuilder();
+    	sb.append("<speak>");
+    	for(String s : l.urls){
+    		sb.append("<audio src='"+s+"'/>");
+    	}
+    	sb.append("</speak>");
+    	return sb.toString();
     }
 }
