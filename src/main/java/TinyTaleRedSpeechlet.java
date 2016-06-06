@@ -110,22 +110,23 @@ public class TinyTaleRedSpeechlet implements Speechlet {
           currentStateNode = manager.getNodeMatchingDebugName(currentStateNode, currentState);
         }
         
+        
         String previousIntent = (String) session.getAttribute(PREVIOUS_INTENT_KEY);
         String debugStringz = "currentStateAtStartOfTick="+currentState+",previousIntent="+previousIntent+",currentIntent="+currentIntent;
-        
         //See if valid transition matches current state
+        String speechOutput = null;
         if(currentStateNode.transferStructure.hasValidTransferForIntent(currentIntent)){
             //Set new state if match, else- error prompt
             AZStateNode<String> nextState = currentStateNode.transferStructure.getStateForIntent(currentIntent);
             session.setAttribute(CURRENT_STATE_KEY, nextState.debugName);//fire transition!
             debugStringz = "newCurrentStateAfterTransition="+nextState.debugName+","+debugStringz;
             currentStateNode = nextState;
+            speechOutput = currentStateNode.audioContainer.getSSML();
         } else {
-        	//TODO: Error prompt **if possible**!
+            speechOutput = currentStateNode.audioContainer.getErrorSSML();
         }
-        
         session.setAttribute("DEBUG_AZ",debugStringz);//tmp!
-
+        
         //update the previous intent
         session.setAttribute(PREVIOUS_INTENT_KEY,currentIntent);
 
@@ -134,8 +135,6 @@ public class TinyTaleRedSpeechlet implements Speechlet {
         session.setAttribute(STATE_PATH_KEY,statePathKey+","+currentStateNode.debugName);//path taken in entire session!
         //TODO: save (currentState, incomingIntent) KV pairs for future debugging in time series within the session
         
-        String speechOutput = currentStateNode.audioContainer.getSSML();
-
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
         card.setTitle("HelloWorld");

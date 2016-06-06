@@ -8,18 +8,8 @@ public class TinyTalesRedStateManager {
 	
 	//fetch node by name
 	public AZStateNode<String> getNodeMatchingDebugName(AZStateNode<String> startNode, String goalNodeDebugName) {
-
-//		if(n.debugName.equals(debugName)){
-//			return n;
-//		}
-//		
-//	    for (int i = 0; i < n.children.size() - 1; i++) {
-//	    	return getNodeMatchingDebugName(n.children.get(i), debugName);
-//	    }
-//	    
-//		return null;
 		
-//BFS to find node.
+		//BFS to find node.
 		if(startNode.debugName.equals(goalNodeDebugName)){
 			 System.out.println("Goal Node Found!");
 			 System.out.println(startNode);
