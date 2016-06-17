@@ -24,8 +24,8 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 import javax.swing.plaf.nimbus.State;
-//import com.amazon.speech.ui.StandardCard;
-//import com.amazon.speech.ui.Image;
+import com.amazon.speech.ui.StandardCard;
+import com.amazon.speech.ui.Image;
 
 /**
  * This sample shows how to create a simple speechlet for handling speechlet requests.
@@ -54,7 +54,7 @@ public class TinyTaleRedSpeechlet implements Speechlet {
             throws SpeechletException {
         log.info("onLaunch requestId={}, sessionId={}", request.getRequestId(),
                 session.getSessionId());
-        return getWelcomeResponse();
+        return getWelcomeResponse();//TODO: can set session var here.
     }
     
  
@@ -135,10 +135,18 @@ public class TinyTaleRedSpeechlet implements Speechlet {
         session.setAttribute(STATE_PATH_KEY,statePathKey+","+currentStateNode.debugName);//path taken in entire session!
         //TODO: save (currentState, incomingIntent) KV pairs for future debugging in time series within the session
         
-        // Create the Simple card content.
-        SimpleCard card = new SimpleCard();
-        card.setTitle("HelloWorld");
-        card.setContent(debugStringz);
+//        SimpleCard card = new SimpleCard();
+//        card.setTitle(currentStateNode.cardData.title);
+//        card.setContent(currentStateNode.cardData.body);
+       
+        Image introImage = new Image();
+        introImage.setLargeImageUrl("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-redlarge.png");
+        introImage.setSmallImageUrl("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-redsmall.png");
+
+        StandardCard card = new StandardCard();
+        //card.setTitle("Test Standard Card"); //not in documentation
+        card.setText(currentStateNode.cardData.title);
+        card.setImage(introImage);
 
         // Create the plain text output.
         SsmlOutputSpeech speech = new SsmlOutputSpeech();
@@ -182,16 +190,6 @@ public class TinyTaleRedSpeechlet implements Speechlet {
      */
     private SpeechletResponse getWelcomeResponse() {
 
-/*
-        Image introImage = Image();
-        introImage.setLargeImageUrl("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/iconlarge.png");
-        introImage.setSmallImageUrl("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/iconsmall.png");
-
-        StandardCard card = new StandardCard();
-        card.setTitle("TestizTitle hurre");
-        card.setText("Testiez With Image");
-        card.setImage(introImage);
-*/
         
         String currentState = kInitialState;
         

@@ -39,6 +39,7 @@ public class TinyTalesRedStateManager {
 	}
 
 	public AZStateNode<String> getRootNode() throws Exception{
+		
 		//
 		// Cards
 		//
@@ -46,7 +47,6 @@ public class TinyTalesRedStateManager {
 				"https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/iconlarge.png", 
 				"Card Title Goes Here", "This is card description here!\nAnd more description!"
 		);
-		
 
 		//
 		// States
@@ -54,64 +54,63 @@ public class TinyTalesRedStateManager {
 		AZStateNode<String> NODE_ROOT = new AZStateNode<String>("NODE_ROOT",
 						commonCard,
 						new AZAudio(
-								new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-1aOnceUponATime.mp3"),
-								new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-1aError.mp3")		
+								new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/0aIntro.mp3"),
+								new URLList()
+						)
+		);
+		
+		AZStateNode<String> NODE_ONCE_UPON_A_TIME = new AZStateNode<String>("NODE_ONCE_UPON_A_TIME",
+						commonCard,
+						new AZAudio(
+								new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/1aOnceUponATime.mp3"),
+								new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/1aError.mp3")		
 						)
 		);
 			
 		AZStateNode<String> NODE_TURN_LEFT = new AZStateNode<String>("NODE_TURN_LEFT",
 				commonCard,
 				new AZAudio(
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-2aRedWentLeftIntoTheForest.mp3"),
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-2aError.mp3")
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/2aRedWentLeftIntoTheForest.mp3"),
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/2aError.mp3")
 				)
 		);
 		
 		AZStateNode<String> NODE_TURN_RIGHT = new AZStateNode<String>("NODE_TURN_RIGHT",
 				commonCard,
 				new AZAudio(
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-2bTurningRight.mp3"),
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-2bError.mp3")
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/2bTurningRight.mp3"),
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/2bError.mp3")
 				)
 		);
 
 		AZStateNode<String> NODE_SHINY_THING = new AZStateNode<String>("NODE_SHINY_THING",
 				commonCard,
 				new AZAudio(
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-3aRedWalkedToTheShinyThing.mp3"),
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-3bError.mp3")
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/3aRedWalkedToTheShinyThing.mp3"),
+						new URLList("")//TODO: null or empty?
 				)
 		);
 		
 		AZStateNode<String> NODE_STAY_PATH = new AZStateNode<String>("NODE_STAY_PATH",
 				commonCard,
 				new AZAudio(
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-3bRedStayedOnThePath.mp3"),
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-3cError.mp3")
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/3bRedStayedOnThePath.mp3"),
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/3bError.mp3")
 				)
 		);
 		
 		AZStateNode<String> NODE_SKIPPING = new AZStateNode<String>("NODE_SKIPPING",
 				commonCard,
 				new AZAudio(
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-3cRedKeptSkippingAlongThePath.mp3"),
-						new URLList()//TODO: null or empty?
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/3cRedKeptSkippingAlongThePath.mp3"),
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/3cError.mp3")
 				)
 		);
 		
 		AZStateNode<String> NODE_FOLLOW_WOLF = new AZStateNode<String>("NODE_FOLLOW_WOLF",
 				commonCard,
 				new AZAudio(
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-3dRedFollowedTheWolfOnAShortcut.mp3"),
-						new URLList()
-				)
-		);
-		
-		
-		AZStateNode<String> NODE_THROW_CAKE = new AZStateNode<String>("NODE_THROW_CAKE",
-				commonCard,
-				new AZAudio(
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-4aCake.mp3"),
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/3dRedFollowedTheWolfOnAShortcut.mp3"),
 						new URLList()
 				)
 		);
@@ -120,8 +119,8 @@ public class TinyTalesRedStateManager {
 		AZStateNode<String> NODE_THROW_CAKE_AND_END = new AZStateNode<String>("NODE_THROW_CAKE_AND_END",
 				commonCard,
 				new AZAudio(
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-4aCake.mp3",
-								    "https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-5aEnding.mp3"
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/4aCake.mp3",
+								    "https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/5aEnding.mp3"
 						),
 						new URLList()
 				)
@@ -130,7 +129,7 @@ public class TinyTalesRedStateManager {
 		AZStateNode<String> NODE_THE_END = new AZStateNode<String>("NODE_THE_END",
 				commonCard,
 				new AZAudio(
-						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-5aEnding.mp3"),
+						new URLList("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/5aEnding.mp3"),
 						new URLList()
 				)
 		);
@@ -138,6 +137,7 @@ public class TinyTalesRedStateManager {
 		//
 		// Intents
 		//
+		String INTENT_YES = "TinyTales_Red_YesIntent";
 		String INTENT_GO_LEFT = "TinyTales_Red_GoLeftTowardForestIntent";
 		String INTENT_GO_RIGHT = "TinyTales_Red_GoRightTowardRiverIntent";
 		String INTENT_SHINY = "TinyTales_Red_GoTowardShinyThingIntent";
@@ -151,24 +151,26 @@ public class TinyTalesRedStateManager {
 		//
 		// Edges / Transitions
 		//
-		NODE_ROOT.addEdgeForIntent(INTENT_GO_LEFT, NODE_TURN_LEFT);
-		
-			NODE_TURN_LEFT.addEdgeForIntent(INTENT_SHINY, NODE_SHINY_THING);
-			NODE_TURN_LEFT.addEdgeForIntent(INTENT_GRANDMAS, NODE_STAY_PATH);
+		NODE_ROOT.addEdgeForIntent(INTENT_YES,NODE_ONCE_UPON_A_TIME);
+			NODE_ONCE_UPON_A_TIME.addEdgeForIntent(INTENT_GO_LEFT, NODE_TURN_LEFT);
 			
-				NODE_STAY_PATH.addEdgeForIntent(INTENT_CAKE, NODE_THROW_CAKE_AND_END);
+				NODE_TURN_LEFT.addEdgeForIntent(INTENT_SHINY, NODE_SHINY_THING);
+				NODE_TURN_LEFT.addEdgeForIntent(INTENT_GRANDMAS, NODE_STAY_PATH);
+				
+					NODE_STAY_PATH.addEdgeForIntent(INTENT_YELL, NODE_THE_END);
+					NODE_STAY_PATH.addEdgeForIntent(INTENT_CAKE, NODE_THROW_CAKE_AND_END);
+				
+			NODE_ONCE_UPON_A_TIME.addEdgeForIntent(INTENT_GO_RIGHT, NODE_TURN_RIGHT);
 			
-		NODE_ROOT.addEdgeForIntent(INTENT_GO_RIGHT, NODE_TURN_RIGHT);
-		
-			NODE_TURN_RIGHT.addEdgeForIntent(INTENT_SKIPPING, NODE_SKIPPING);
-			NODE_TURN_RIGHT.addEdgeForIntent(INTENT_WOLF, NODE_FOLLOW_WOLF);
-			
-				NODE_SKIPPING.addEdgeForIntent(INTENT_CAKE, NODE_THROW_CAKE);
-				NODE_SKIPPING.addEdgeForIntent(INTENT_YELL, NODE_THE_END);
+				NODE_TURN_RIGHT.addEdgeForIntent(INTENT_SKIPPING, NODE_SKIPPING);
+				NODE_TURN_RIGHT.addEdgeForIntent(INTENT_WOLF, NODE_FOLLOW_WOLF);
+				
+					NODE_SKIPPING.addEdgeForIntent(INTENT_CAKE, NODE_THROW_CAKE_AND_END);
+					NODE_SKIPPING.addEdgeForIntent(INTENT_YELL, NODE_THE_END);
 
 		//TODO: what if graph is cyclic ?
 		//TODO: auto transitions (autoplays)
-//		NODE_ROOT.print();
+		NODE_ROOT.print();
 		
 		return NODE_ROOT;
 	}

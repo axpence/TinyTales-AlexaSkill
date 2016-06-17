@@ -1,6 +1,9 @@
 {
   "intents": [
     {
+      "intent": "TinyTales_Red_YesIntent"
+    },
+    {
       "intent": "TinyTales_Red_GoLeftTowardForestIntent"
     },
     {

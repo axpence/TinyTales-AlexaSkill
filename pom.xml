@@ -9,10 +9,11 @@
   <url>http://developer.amazon.com/ask</url>
 
   <dependencies>
+    <!-- http://mvnrepository.com/artifact/com.amazon.alexa/alexa-skills-kit -->
     <dependency>
       <groupId>com.amazon.alexa</groupId>
       <artifactId>alexa-skills-kit</artifactId>
-      <version>1.1.2</version>
+      <version>1.1.3</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
