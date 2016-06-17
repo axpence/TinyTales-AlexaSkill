@@ -203,7 +203,7 @@ public class TinyTaleRedSpeechlet implements Speechlet {
         
         SimpleCard card = new SimpleCard();
         card.setTitle("Welcome to Tiny Tales!");
-        card.setContent("STUFFZ HEREZ");
+        card.setContent("Tiny Tales are interactive children's educational fables and stories told weekly with the objective of teaching children life lessons via storytelling.\n\nTiny Tales teaches children life's lessons through an engaging and adventurous storytelling method enabling you to control the ending of each story.");
         
         String speechOutput = currentStateNode.audioContainer.getSSML();
     	String errorSSML = currentStateNode.audioContainer.getErrorSSML();
