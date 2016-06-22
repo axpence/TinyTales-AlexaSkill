@@ -1,4 +1,4 @@
-package tinytalered;
+package main.java;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -134,15 +134,11 @@ public class TinyTaleRedSpeechlet implements Speechlet {
         statePathKey = (statePathKey == null) ? "" : statePathKey;
         session.setAttribute(STATE_PATH_KEY,statePathKey+","+currentStateNode.debugName);//path taken in entire session!
         //TODO: save (currentState, incomingIntent) KV pairs for future debugging in time series within the session
-        
-//        SimpleCard card = new SimpleCard();
-//        card.setTitle(currentStateNode.cardData.title);
-//        card.setContent(currentStateNode.cardData.body);
        
         Image introImage = new Image();
-        introImage.setLargeImageUrl("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-redlarge.png");
-        introImage.setSmallImageUrl("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/tinytales-red-redsmall.png");
-
+        introImage.setLargeImageUrl("https://s3-us-west-2.amazonaws.com/static-alexa-img-assets/color_large2.png");
+        introImage.setSmallImageUrl("https://s3-us-west-2.amazonaws.com/static-alexa-img-assets/color_small2.png");
+        
         StandardCard card = new StandardCard();
         //card.setTitle("Test Standard Card"); //not in documentation
         card.setText(currentStateNode.cardData.title);
@@ -190,7 +186,6 @@ public class TinyTaleRedSpeechlet implements Speechlet {
      */
     private SpeechletResponse getWelcomeResponse() {
 
-        
         String currentState = kInitialState;
         
         TinyTalesRedStateManager manager = new TinyTalesRedStateManager();
@@ -201,9 +196,14 @@ public class TinyTaleRedSpeechlet implements Speechlet {
         	
         }
         
-        SimpleCard card = new SimpleCard();
-        card.setTitle("Welcome to Tiny Tales!");
-        card.setContent("Tiny Tales are interactive children's educational fables and stories told weekly with the objective of teaching children life lessons via storytelling.\n\nTiny Tales teaches children life's lessons through an engaging and adventurous storytelling method enabling you to control the ending of each story.");
+        Image introImage = new Image();
+        introImage.setLargeImageUrl("https://s3-us-west-2.amazonaws.com/static-alexa-img-assets/tinytales-red/story_intro_large.png");
+        introImage.setSmallImageUrl("https://s3-us-west-2.amazonaws.com/static-alexa-img-assets/tinytales-red/story_intro_small.png");
+        
+        StandardCard card = new StandardCard();
+        //card.setTitle("Test Standard Card"); //not in documentation
+        card.setText("Welcome to Tiny Tales!\n\n" + "Tiny Tales are interactive children's educational fables and stories told weekly with the objective of teaching children life lessons via storytelling.\n\nTiny Tales teaches children life's lessons through an engaging and adventurous storytelling method enabling you to control the ending of each story.");
+        card.setImage(introImage);
         
         String speechOutput = currentStateNode.audioContainer.getSSML();
     	String errorSSML = currentStateNode.audioContainer.getErrorSSML();

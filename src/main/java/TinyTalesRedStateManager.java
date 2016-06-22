@@ -45,7 +45,7 @@ public class TinyTalesRedStateManager {
 		//
 		AZCard commonCard = new AZCard("https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/iconsmall.png", 
 				"https://s3-us-west-2.amazonaws.com/static-assets-az/tinytales-red/iconlarge.png", 
-				"Card Title Goes Here", "This is card description here!\nAnd more description!"
+				"Red - an adventure story by Tiny Tales", "Tiny Tales are interactive children's educational fables and stories told weekly with the objective of teaching children life lessons via storytelling"
 		);
 
 		//
