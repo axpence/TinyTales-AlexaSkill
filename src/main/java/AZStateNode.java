@@ -29,16 +29,16 @@ public class AZStateNode<T> implements Iterable<AZStateNode<T>> { //TODO: use T 
 		return (String)this.debugName;
 	}
 	
-	void addEdgeForIntent(String intentString, AZStateNode n) throws Exception{
+	void addEdgeForIntent(AZIntent intent, AZStateNode<T> n) {
 		
 		//TODO: make sure "debug name" doesn't match any other in tree...
-		
-		if(transferStructure.hasValidTransferForIntent(intentString)){
-			throw new Exception("already contains edge! Cannot add two edges for same intent!");
-		} 
-		transferStructure.addEdgeForIntent(intentString, n);
-		this.children.add(n);
-		n.parent = this;
+		if(transferStructure.hasValidTransferForIntent(intent)){
+			System.out.println("already contains edge! Cannot add two edges for same intent!");
+		} else {
+			transferStructure.addEdgeForIntent(intent, n);
+			this.children.add(n);
+			n.parent = this;
+		}
 	}
 	
 	public void print() {

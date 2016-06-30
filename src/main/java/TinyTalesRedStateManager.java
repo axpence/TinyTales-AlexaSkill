@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import main.java.AZIntent;
+
 public class TinyTalesRedStateManager {
 	
 	//fetch node by name
@@ -34,11 +36,9 @@ public class TinyTalesRedStateManager {
 		}
 		
 		return null;
-		
-		
 	}
 
-	public AZStateNode<String> getRootNode() throws Exception{
+	public AZStateNode<String> getRootNode() {
 		
 		//
 		// Cards
@@ -133,40 +133,27 @@ public class TinyTalesRedStateManager {
 						new URLList()
 				)
 		);
-	
-		//
-		// Intents
-		//
-		String INTENT_YES = "TinyTales_Red_YesIntent";
-		String INTENT_GO_LEFT = "TinyTales_Red_GoLeftTowardForestIntent";
-		String INTENT_GO_RIGHT = "TinyTales_Red_GoRightTowardRiverIntent";
-		String INTENT_SHINY = "TinyTales_Red_GoTowardShinyThingIntent";
-		String INTENT_GRANDMAS = "TinyTales_Red_GoTowardsGrandmasIntent";
-		String INTENT_CAKE = "TinyTales_Red_ThrowCakeAtTheWolfIntent";
-		String INTENT_YELL = "TinyTales_Red_YellForHelpIntent";
-		String INTENT_SKIPPING = "TinyTales_Red_KeepSkippingOnThePathIntent";
-		String INTENT_WOLF = "TinyTales_Red_FollowWolfOnShortcutIntent";
-		String INTENT_STOP = "AMAZON.StopIntent";//TODO: how to handle "universal" intents? (exclusivity, etc?)
+
 		
 		//
 		// Edges / Transitions
 		//
-		NODE_ROOT.addEdgeForIntent(INTENT_YES,NODE_ONCE_UPON_A_TIME);
-			NODE_ONCE_UPON_A_TIME.addEdgeForIntent(INTENT_GO_LEFT, NODE_TURN_LEFT);
+		NODE_ROOT.addEdgeForIntent(AZIntent.INTENT_YES,NODE_ONCE_UPON_A_TIME);
+			NODE_ONCE_UPON_A_TIME.addEdgeForIntent(AZIntent.INTENT_GO_LEFT, NODE_TURN_LEFT);
 			
-				NODE_TURN_LEFT.addEdgeForIntent(INTENT_SHINY, NODE_SHINY_THING);
-				NODE_TURN_LEFT.addEdgeForIntent(INTENT_GRANDMAS, NODE_STAY_PATH);
+				NODE_TURN_LEFT.addEdgeForIntent(AZIntent.INTENT_SHINY, NODE_SHINY_THING);
+				NODE_TURN_LEFT.addEdgeForIntent(AZIntent.INTENT_GRANDMAS, NODE_STAY_PATH);
 				
-					NODE_STAY_PATH.addEdgeForIntent(INTENT_YELL, NODE_THE_END);
-					NODE_STAY_PATH.addEdgeForIntent(INTENT_CAKE, NODE_THROW_CAKE_AND_END);
+					NODE_STAY_PATH.addEdgeForIntent(AZIntent.INTENT_YELL, NODE_THE_END);
+					NODE_STAY_PATH.addEdgeForIntent(AZIntent.INTENT_CAKE, NODE_THROW_CAKE_AND_END);
 				
-			NODE_ONCE_UPON_A_TIME.addEdgeForIntent(INTENT_GO_RIGHT, NODE_TURN_RIGHT);
+			NODE_ONCE_UPON_A_TIME.addEdgeForIntent(AZIntent.INTENT_GO_RIGHT, NODE_TURN_RIGHT);
 			
-				NODE_TURN_RIGHT.addEdgeForIntent(INTENT_SKIPPING, NODE_SKIPPING);
-				NODE_TURN_RIGHT.addEdgeForIntent(INTENT_WOLF, NODE_FOLLOW_WOLF);
+				NODE_TURN_RIGHT.addEdgeForIntent(AZIntent.INTENT_SKIPPING, NODE_SKIPPING);
+				NODE_TURN_RIGHT.addEdgeForIntent(AZIntent.INTENT_WOLF, NODE_FOLLOW_WOLF);
 				
-					NODE_SKIPPING.addEdgeForIntent(INTENT_CAKE, NODE_THROW_CAKE_AND_END);
-					NODE_SKIPPING.addEdgeForIntent(INTENT_YELL, NODE_THE_END);
+					NODE_SKIPPING.addEdgeForIntent(AZIntent.INTENT_CAKE, NODE_THROW_CAKE_AND_END);
+					NODE_SKIPPING.addEdgeForIntent(AZIntent.INTENT_YELL, NODE_THE_END);
 
 		//TODO: what if graph is cyclic ?
 		//TODO: auto transitions (autoplays)

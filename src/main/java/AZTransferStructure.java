@@ -1,6 +1,10 @@
 package main.java;
 import java.util.HashMap;
 
+import com.amazon.speech.slu.Intent;
+
+import main.java.AZIntent;
+
 
 public class AZTransferStructure {
 
@@ -10,16 +14,25 @@ public class AZTransferStructure {
     	transferStructure = new HashMap<String,AZStateNode>();
     }
 	
-    void addEdgeForIntent(String intent, AZStateNode n){
-    	transferStructure.put(intent,n);
+    void addEdgeForIntent(AZIntent intent, AZStateNode n){
+    	transferStructure.put(intent.name,n);
     }
     
-    public boolean hasValidTransferForIntent(String intent){
-    	return transferStructure.get(intent) != null;
+    public boolean hasValidTransferForIntent(AZIntent intent){
+    	return transferStructure.get(intent.name) != null;
     }
     
-    public AZStateNode<String> getStateForIntent(String intent){
+    public AZStateNode<String> getStateForIntent(AZIntent intent){
     	assert(hasValidTransferForIntent(intent));
-    	return transferStructure.get(intent);
+    	return transferStructure.get(intent.name);
+    }
+    
+    public boolean hasValidTransferForIntent(Intent intent){
+    	return transferStructure.get(intent.getName()) != null;
+    }
+    
+    public AZStateNode<String> getStateForIntent(Intent intent){
+    	assert(hasValidTransferForIntent(intent));
+    	return transferStructure.get(intent.getName());
     }
 }
