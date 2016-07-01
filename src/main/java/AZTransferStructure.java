@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 import com.amazon.speech.slu.Intent;
 
-import main.java.AZIntent;
+import main.java.TTIntent;
 
 
 public class AZTransferStructure {
@@ -14,15 +14,15 @@ public class AZTransferStructure {
     	transferStructure = new HashMap<String,AZStateNode>();
     }
 	
-    void addEdgeForIntent(AZIntent intent, AZStateNode n){
+    void addEdgeForIntent(TTIntent intent, AZStateNode n){
     	transferStructure.put(intent.name,n);
     }
     
-    public boolean hasValidTransferForIntent(AZIntent intent){
+    public boolean hasValidTransferForIntent(TTIntent intent){
     	return transferStructure.get(intent.name) != null;
     }
     
-    public AZStateNode<String> getStateForIntent(AZIntent intent){
+    public AZStateNode<String> getStateForIntent(TTIntent intent){
     	assert(hasValidTransferForIntent(intent));
     	return transferStructure.get(intent.name);
     }

@@ -29,7 +29,7 @@ public class AZStateNode<T> implements Iterable<AZStateNode<T>> { //TODO: use T 
 		return (String)this.debugName;
 	}
 	
-	void addEdgeForIntent(AZIntent intent, AZStateNode<T> n) {
+	void addEdgeForIntent(TTIntent intent, AZStateNode<T> n) {
 		
 		//TODO: make sure "debug name" doesn't match any other in tree...
 		if(transferStructure.hasValidTransferForIntent(intent)){

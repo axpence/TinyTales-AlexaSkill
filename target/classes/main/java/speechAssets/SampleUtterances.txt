@@ -1,0 +1,192 @@
+TinyTales_Red_YesIntent yeah
+TinyTales_Red_YesIntent yes
+TinyTales_Red_YesIntent ok
+
+TinyTales_Red_GoLeftTowardForestIntent left towards the forest
+TinyTales_Red_GoLeftTowardForestIntent she went the left way
+TinyTales_Red_GoLeftTowardForestIntent red went the left way
+TinyTales_Red_GoLeftTowardForestIntent left way
+TinyTales_Red_GoLeftTowardForestIntent left
+TinyTales_Red_GoLeftTowardForestIntent go left
+TinyTales_Red_GoLeftTowardForestIntent she went left
+TinyTales_Red_GoLeftTowardForestIntent red went left
+TinyTales_Red_GoLeftTowardForestIntent went left
+TinyTales_Red_GoLeftTowardForestIntent she took a left
+TinyTales_Red_GoLeftTowardForestIntent red took a left
+TinyTales_Red_GoLeftTowardForestIntent took a left
+TinyTales_Red_GoLeftTowardForestIntent she went in the forest
+TinyTales_Red_GoLeftTowardForestIntent red went in the forest
+TinyTales_Red_GoLeftTowardForestIntent she went towards the forest
+TinyTales_Red_GoLeftTowardForestIntent red went towards the forest
+TinyTales_Red_GoLeftTowardForestIntent she went toward the forest
+TinyTales_Red_GoLeftTowardForestIntent red went toward the forest
+TinyTales_Red_GoLeftTowardForestIntent went in the forest
+TinyTales_Red_GoLeftTowardForestIntent went toward the forest
+TinyTales_Red_GoLeftTowardForestIntent went towards the forest
+TinyTales_Red_GoLeftTowardForestIntent the forest
+TinyTales_Red_GoLeftTowardForestIntent go to the forest
+TinyTales_Red_GoLeftTowardForestIntent go towards the forest
+TinyTales_Red_GoLeftTowardForestIntent she went toward the forest
+TinyTales_Red_GoLeftTowardForestIntent red went toward the forest
+TinyTales_Red_GoLeftTowardForestIntent went toward the forest
+TinyTales_Red_GoLeftTowardForestIntent went into the forest
+TinyTales_Red_GoLeftTowardForestIntent into the forest
+TinyTales_Red_GoLeftTowardForestIntent go into the forest
+TinyTales_Red_GoLeftTowardForestIntent she entered the forest
+TinyTales_Red_GoLeftTowardForestIntent red entered the forest
+TinyTales_Red_GoLeftTowardForestIntent left turn
+TinyTales_Red_GoLeftTowardForestIntent go left
+
+TinyTales_Red_GoRightTowardRiverIntent right towards the river
+TinyTales_Red_GoRightTowardRiverIntent she went the right way
+TinyTales_Red_GoRightTowardRiverIntent red went the right way
+TinyTales_Red_GoRightTowardRiverIntent the right way
+TinyTales_Red_GoRightTowardRiverIntent right
+TinyTales_Red_GoRightTowardRiverIntent go right
+TinyTales_Red_GoRightTowardRiverIntent she went right
+TinyTales_Red_GoRightTowardRiverIntent red went right
+TinyTales_Red_GoRightTowardRiverIntent went right
+TinyTales_Red_GoRightTowardRiverIntent she took a right
+TinyTales_Red_GoRightTowardRiverIntent red took a right
+TinyTales_Red_GoRightTowardRiverIntent took a right
+TinyTales_Red_GoRightTowardRiverIntent she went in the river
+TinyTales_Red_GoRightTowardRiverIntent red went in the river
+TinyTales_Red_GoRightTowardRiverIntent she towards the river
+TinyTales_Red_GoRightTowardRiverIntent red towards the river
+TinyTales_Red_GoRightTowardRiverIntent went towards the river
+TinyTales_Red_GoRightTowardRiverIntent towards the river
+TinyTales_Red_GoRightTowardRiverIntent the river
+TinyTales_Red_GoRightTowardRiverIntent go to the river
+TinyTales_Red_GoRightTowardRiverIntent go towards the river
+TinyTales_Red_GoRightTowardRiverIntent she went towards the river
+TinyTales_Red_GoRightTowardRiverIntent red went towards the river
+TinyTales_Red_GoRightTowardRiverIntent she went toward the river
+TinyTales_Red_GoRightTowardRiverIntent red went toward the river
+TinyTales_Red_GoRightTowardRiverIntent she went into the river
+TinyTales_Red_GoRightTowardRiverIntent red went into the river
+TinyTales_Red_GoRightTowardRiverIntent went into the river
+TinyTales_Red_GoRightTowardRiverIntent go into the river
+TinyTales_Red_GoRightTowardRiverIntent into the river
+TinyTales_Red_GoRightTowardRiverIntent she entered the river
+TinyTales_Red_GoRightTowardRiverIntent red entered the river
+TinyTales_Red_GoRightTowardRiverIntent right turn
+TinyTales_Red_GoRightTowardRiverIntent turn right
+
+TinyTales_Red_GoTowardShinyThingIntent go toward shiny thing
+TinyTales_Red_GoTowardShinyThingIntent leave path for shiny thing
+TinyTales_Red_GoTowardShinyThingIntent leave path
+TinyTales_Red_GoTowardShinyThingIntent went toward shiny thing
+TinyTales_Red_GoTowardShinyThingIntent towards the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent shiny thing
+TinyTales_Red_GoTowardShinyThingIntent shiny
+TinyTales_Red_GoTowardShinyThingIntent she went to the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent red went to the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent went to shiny
+TinyTales_Red_GoTowardShinyThingIntent she went in the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent red went in the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent went to see the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent go towards shiny thing
+TinyTales_Red_GoTowardShinyThingIntent she went towards the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent red went towards the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent she went toward the shiny
+TinyTales_Red_GoTowardShinyThingIntent red went toward the shiny
+TinyTales_Red_GoTowardShinyThingIntent she went toward the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent red went toward the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent she left the path
+TinyTales_Red_GoTowardShinyThingIntent red left the path
+TinyTales_Red_GoTowardShinyThingIntent left the path
+TinyTales_Red_GoTowardShinyThingIntent she went off the path
+TinyTales_Red_GoTowardShinyThingIntent red went off the path
+TinyTales_Red_GoTowardShinyThingIntent she left to the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent red left to the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent left to the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent go into the shiny
+TinyTales_Red_GoTowardShinyThingIntent into the shiny thing
+TinyTales_Red_GoTowardShinyThingIntent turn off the path
+TinyTales_Red_GoTowardShinyThingIntent leave the path
+
+TinyTales_Red_GoTowardsGrandmasIntent go towards grandma's
+TinyTales_Red_GoTowardsGrandmasIntent went towards grandma's
+TinyTales_Red_GoTowardsGrandmasIntent went toward grandma
+TinyTales_Red_GoTowardsGrandmasIntent grandma
+TinyTales_Red_GoTowardsGrandmasIntent grandmas
+TinyTales_Red_GoTowardsGrandmasIntent grandma's
+TinyTales_Red_GoTowardsGrandmasIntent stay to grandmas
+TinyTales_Red_GoTowardsGrandmasIntent stay until grandmas
+TinyTales_Red_GoTowardsGrandmasIntent went toward grandmas
+TinyTales_Red_GoTowardsGrandmasIntent towards grandmas
+TinyTales_Red_GoTowardsGrandmasIntent she went to grandmas
+TinyTales_Red_GoTowardsGrandmasIntent red went to grandmas
+TinyTales_Red_GoTowardsGrandmasIntent went to grandmas
+TinyTales_Red_GoTowardsGrandmasIntent went to see the grandma
+TinyTales_Red_GoTowardsGrandmasIntent see grandma
+TinyTales_Red_GoTowardsGrandmasIntent visit grandma
+TinyTales_Red_GoTowardsGrandmasIntent go to grandmas
+
+TinyTales_Red_ThrowCakeAtTheWolfIntent throw cake at the wolf
+TinyTales_Red_ThrowCakeAtTheWolfIntent she throw cake at the wolf
+TinyTales_Red_ThrowCakeAtTheWolfIntent she threw cake at the wolf
+TinyTales_Red_ThrowCakeAtTheWolfIntent red threw cake at the wolf
+TinyTales_Red_ThrowCakeAtTheWolfIntent red throw cake at the wolf
+TinyTales_Red_ThrowCakeAtTheWolfIntent throw cake
+TinyTales_Red_ThrowCakeAtTheWolfIntent cake
+TinyTales_Red_ThrowCakeAtTheWolfIntent cake at the wolf
+TinyTales_Red_ThrowCakeAtTheWolfIntent cake at wolf
+
+TinyTales_Red_YellForHelpIntent yell
+TinyTales_Red_YellForHelpIntent yell for help
+TinyTales_Red_YellForHelpIntent yelled for help
+TinyTales_Red_YellForHelpIntent she yell for help
+TinyTales_Red_YellForHelpIntent she yelled for help
+TinyTales_Red_YellForHelpIntent she yelled
+TinyTales_Red_YellForHelpIntent red yelled
+TinyTales_Red_YellForHelpIntent red yelled help
+TinyTales_Red_YellForHelpIntent yelled help
+TinyTales_Red_YellForHelpIntent yell help
+
+TinyTales_Red_KeepSkippingOnThePathIntent red kept skipping on the path
+TinyTales_Red_KeepSkippingOnThePathIntent she kept skipping on the path
+TinyTales_Red_KeepSkippingOnThePathIntent she was skipping on the path
+TinyTales_Red_KeepSkippingOnThePathIntent red was skipping on the path
+TinyTales_Red_KeepSkippingOnThePathIntent skipping on the path
+TinyTales_Red_KeepSkippingOnThePathIntent skipping
+TinyTales_Red_KeepSkippingOnThePathIntent skipped
+TinyTales_Red_KeepSkippingOnThePathIntent red skipped
+TinyTales_Red_KeepSkippingOnThePathIntent she skipped
+TinyTales_Red_KeepSkippingOnThePathIntent red skipped on the path
+TinyTales_Red_KeepSkippingOnThePathIntent she stayed on the path
+TinyTales_Red_KeepSkippingOnThePathIntent stayed on the path
+TinyTales_Red_KeepSkippingOnThePathIntent she stayed on the path
+TinyTales_Red_KeepSkippingOnThePathIntent red stayed on the path
+TinyTales_Red_KeepSkippingOnThePathIntent stayed on the path
+TinyTales_Red_KeepSkippingOnThePathIntent she kept on the path
+TinyTales_Red_KeepSkippingOnThePathIntent red kept on the path
+TinyTales_Red_KeepSkippingOnThePathIntent she stayed on the path
+TinyTales_Red_KeepSkippingOnThePathIntent red stayed on the path
+
+TinyTales_Red_FollowWolfOnShortcutIntent red took a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent follow the wolf
+TinyTales_Red_FollowWolfOnShortcutIntent followed the wolf
+TinyTales_Red_FollowWolfOnShortcutIntent red followed a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent she followed a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent she followed the wolf on shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent red followed the wolf on shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent she followed wolf on a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent she followed wolf on a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent red followed wolf on a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent red followed the wolf on a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent red followed the wolf on a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent the wolf took a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent took a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent followed a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent red followed a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent red went on a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent went on a shortcut
+TinyTales_Red_FollowWolfOnShortcutIntent shortcut
+
+AMAZON.StopIntent close the app
+AMAZON.StopIntent stop the app
+AMAZON.StopIntent stop tiny tales
+AMAZON.StopIntent quit the app
+AMAZON.StopIntent quit tiny tales
+AMAZON.StopIntent go back
