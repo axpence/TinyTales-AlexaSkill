@@ -14,7 +14,8 @@ import com.amazon.speech.speechlet.lambda.SpeechletRequestStreamHandler;
 public final class TTRedSpeechletRequestStreamHandler extends SpeechletRequestStreamHandler {
     private static final Set<String> supportedApplicationIds = new HashSet<String>();
     static {
-        supportedApplicationIds.add("");
+        System.setProperty("com.amazon.speech.speechlet.servlet.disableRequestSignatureCheck", "true");
+		//supportedApplicationIds.add("");
     }
 
     public TTRedSpeechletRequestStreamHandler() {
